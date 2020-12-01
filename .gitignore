@@ -37,6 +37,3 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
-
-# don't take the html files aswell
-*.html
