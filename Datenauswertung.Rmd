@@ -1,0 +1,54 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# style [Wie bekommen wir einen lesbaren Code für alle hinn?]
+
+```{r}
+
+# First of all some style rules. Headers get # and a line # ...... ---- above
+# it, Subheaders get ##, subsubheaders get ###. All headers get ---- at the end
+# so that they are foldable. Collapse all with Alt+o to see its beauty
+# (Alt+Shift+o to expand all afterwards) Regular comments that are not headers
+# get a single #
+
+## about spacing
+
+#bad
+# good
+
+
+## Two blank lines before each header you can fold and one afterwards ----
+
+# one blank line after each header. No blank lines after a normal comment
+bad<-"bad"
+good <- "good"
+
+# one blank before each comment.
+
+```
+
+
+# load packages & checkpoint
+
+```{r}
+
+if(!require("checkpoint")){install.packages("checkpoint")}; library("checkpoint") # this solves the problem of package reproducibility. It saves current versions of the scripts you use.
+
+checkpoint("2020-11-03", project = "scripts/", 
+             checkpointLocation = getwd())
+
+if(!require("tidyverse")){install.packages("tidyverse")}; library("tidyverse")
+if(!require("ggplot2")){install.packages("ggplot2")}; library("ggplot2") # plots
+
+```
+
+
+# load example data [Hier beginnt unser eigentliches Script]
+
+```{r}
+
+
+```
+
