@@ -3,7 +3,7 @@ title: "R Notebook"
 output: html_notebook
 ---
 
-
+# .............................................................................. ----
 # style [Style Regeln, damit unser Code gleich aussieht und von allen gelesen werden kann]
 
 ```{r}
@@ -30,7 +30,7 @@ good <- "good"
 
 ```
 
-
+# .............................................................................. ----
 # load packages & checkpoint
 
 ```{r}
@@ -45,7 +45,7 @@ if(!require("ggplot2")){install.packages("ggplot2")}; library("ggplot2") # plots
 
 ```
 
-
+# .............................................................................. ----
 # load example data [hier gehts los]
 
 ```{r}
