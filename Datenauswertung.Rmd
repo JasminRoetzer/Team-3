@@ -37,19 +37,44 @@ good <- "good"
 
 if(!require("checkpoint")){install.packages("checkpoint")}; library("checkpoint") # this solves the problem of package reproducibility. It saves current versions of the scripts you use.
 
-checkpoint("2020-11-03", project = "scripts/", 
+checkpoint("2020-11-03",
              checkpointLocation = getwd())
 
 if(!require("tidyverse")){install.packages("tidyverse")}; library("tidyverse")
 if(!require("ggplot2")){install.packages("ggplot2")}; library("ggplot2") # plots
-
+if(!require("lubridate")){install.packages("lubridate")}; library("lubridate") # Umgang mit Datum
+if(!require("readr")){install.packages("readr")}; library("readr") # Einlesen von Daten
+if(!require("dplyr")){install.packages("dplyr")}; library("dplyr") # Einlesen von Daten
 ```
 
 # .............................................................................. ----
-# load example data [hier gehts los]
+# load data [hier gehts los]
 
 ```{r}
 
+umsatzdaten <- read_csv("raw_data/umsatzdaten_gekuerzt.csv")
+kiwo <- read_csv("raw_data/kiwo.csv")
+wetter <- read_csv("raw_data/wetter.csv")
 
 ```
+# .............................................................................. ----
+# Datensätze strukturieren und auf Fehler untersuchen [hier gehts los]
 
+```{r}
+
+## Überprüfen auf NA 
+
+which(is.na(umsatzdaten==TRUE))
+which(is.na(kiwo==TRUE))
+which(is.na(wetter==TRUE))
+
+# Es gibt NAs im wetter Datensatz, in den beiden anderen nicht.
+
+```
+```{r}
+
+## Erweitern des Umsatzdaten Datensates mit Wochentagen
+
+
+
+```
