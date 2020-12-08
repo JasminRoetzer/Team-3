@@ -28,6 +28,8 @@ good <- "good"
 
 # one blank before each comment.
 
+# Vor und nach ``` Leerzeichen lassen
+
 ```
 
 # .............................................................................. ----
@@ -44,7 +46,8 @@ if(!require("tidyverse")){install.packages("tidyverse")}; library("tidyverse")
 if(!require("ggplot2")){install.packages("ggplot2")}; library("ggplot2") # plots
 if(!require("lubridate")){install.packages("lubridate")}; library("lubridate") # Umgang mit Datum
 if(!require("readr")){install.packages("readr")}; library("readr") # Einlesen von Daten
-if(!require("dplyr")){install.packages("dplyr")}; library("dplyr") # Einlesen von Daten
+if(!require("dplyr")){install.packages("dplyr")}; library("dplyr") # Einlesen von 
+
 ```
 
 # .............................................................................. ----
@@ -57,13 +60,13 @@ kiwo <- read_csv("raw_data/kiwo.csv")
 wetter <- read_csv("raw_data/wetter.csv")
 
 ```
+
 # .............................................................................. ----
 # Datensätze strukturieren und auf Fehler untersuchen [hier gehts los]
 
 ```{r}
 
 ## Überprüfen auf NA 
-
 which(is.na(umsatzdaten==TRUE))
 which(is.na(kiwo==TRUE))
 which(is.na(wetter==TRUE))
@@ -71,10 +74,27 @@ which(is.na(wetter==TRUE))
 # Es gibt NAs im wetter Datensatz, in den beiden anderen nicht.
 
 ```
+
 ```{r}
 
 ## Erweitern des Umsatzdaten Datensates mit Wochentagen
+umsatzdaten$weekday <- wday(umsatzdaten$Datum) # 1 ist Sonntag. Meine ich.
+
+## Wetter an den Datensatz anschließen
+umsatzdaten <- merge(umsatzdaten, wetter, by = "Datum")
+
+## Umsatz des Vortages zufügen -> Vorsicht mit Warengruppe!
+umsatzdaten <- cbind(umsatzdaten, c(NA,umsatzdaten$Umsatz)) # klappt so nicht. Muss mit Group_by gemacht werden
 
 
+```
+
+# .............................................................................. ----
+# Merkliste für nützliche Funktionen
+
+```{r}
+
+glance() # um Parameter von lm() in Tabelle zu oacken
+mape () # Fehler berechnen
 
 ```
