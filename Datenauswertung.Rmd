@@ -39,8 +39,7 @@ good <- "good"
 
 if(!require("checkpoint")){install.packages("checkpoint")}; library("checkpoint") # this solves the problem of package reproducibility. It saves current versions of the scripts you use.
 
-checkpoint("2020-11-03",
-             checkpointLocation = getwd())
+# checkpoint("2020-11-03", checkpointLocation = getwd())
 
 if(!require("tidyverse")){install.packages("tidyverse")}; library("tidyverse")
 if(!require("ggplot2")){install.packages("ggplot2")}; library("ggplot2") # plots
