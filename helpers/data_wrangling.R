@@ -25,6 +25,17 @@ good <- "good"
 
 
 # .............................................................................. ----
+# load packages
+if(!require("tidyverse")){install.packages("tidyverse")}; library("tidyverse")
+if(!require("ggplot2")){install.packages("ggplot2")}; library("ggplot2") # plots
+if(!require("lubridate")){install.packages("lubridate")}; library("lubridate") # Umgang mit Datum
+if(!require("readr")){install.packages("readr")}; library("readr") # Einlesen von Daten
+if(!require("dplyr")){install.packages("dplyr")}; library("dplyr") # Einlesen von 
+if(!require("e1071")){install.packages("e1071")}; library("e1071") # Support Vektor Machines
+if(!require("Metrics")){install.packages("Metrics")}; library("Metrics") # Support Vektor Machines
+
+
+# .............................................................................. ----
 # Daten einlesen ----
 umsatzdaten <- read_csv("raw_data/umsatzdaten_gekuerzt.csv")
 kiwo <- read_csv("raw_data/kiwo.csv")
@@ -111,7 +122,7 @@ for(k in 2:(groupnumber)){
   data <- merge( data_list[[k]], data  , by = c('Warengruppe', "Umsatz", "Datum", "umsatz_day_before"), all = TRUE)
 }
 
-
+umsatzdaten <- data
 # .............................................................................. ----
 ## check for NAS ----
 sum(is.na(data$umsatz_day_before))
@@ -125,4 +136,5 @@ umsatzdaten$weekday <- wday(umsatzdaten$Datum) # 1 ist Sonntag. Meine ich.
 # Wetter an den Datensatz anschließen
 umsatzdaten <- merge(umsatzdaten, wetter, by = "Datum")
 
+write.csv(umsatzdaten, "data/umsatzdaten.csv")
 

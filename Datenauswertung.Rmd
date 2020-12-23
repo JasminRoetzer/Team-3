@@ -56,9 +56,7 @@ if(!require("Metrics")){install.packages("Metrics")}; library("Metrics") # Suppo
 
 ```{r}
 
-umsatzdaten <- read_csv("raw_data/umsatzdaten_gekuerzt.csv")
-kiwo <- read_csv("raw_data/kiwo.csv")
-wetter <- read_csv("raw_data/wetter.csv")
+source("helpers/data_wrangling.R")
 
 ```
 
@@ -80,18 +78,6 @@ which(is.na(wetter==TRUE))
 
 ```
 
-```{r}
-
-## Erweitern des Umsatzdaten Datensates mit Wochentagen
-umsatzdaten$weekday <- wday(umsatzdaten$Datum) # 1 ist Sonntag. Meine ich.
-
-## Wetter an den Datensatz anschließen
-umsatzdaten <- merge(umsatzdaten, wetter, by = "Datum")
-
-## Umsatz des Vortages zufügen -> Vorsicht mit Warengruppe!
-umsatzdaten %>% group_by(weekday) # klappt so nicht. Muss mit Group_by gemacht werde
-
-```
 
 # .............................................................................. ----
 # Lineare Regression 
@@ -220,7 +206,7 @@ use_condaenv("r-reticulate")
 ## Einlesen der Aufbereiteten Daten aus seperatem Skript
 
 ```{r}
-source("umsatzdaten")
+source("helpers/neural-net-data-preparation.R")
 ```
 
 ## Definition des Neuronalen Netzes
