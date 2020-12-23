@@ -38,4 +38,10 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 
-.checkpoint
+*.checkpoint
+
+#checkpoint Ordner
+.checkpoint//
+
+.Skripte_Brandt
+
