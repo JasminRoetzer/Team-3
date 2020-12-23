@@ -237,9 +237,6 @@ summary {
 
 
 <!-- rnb-text-begin -->
-<div id="section" class="section level1">
-<h1>…………………………………………………………………… —-</h1>
-</div>
 <div id="style-style-regeln-damit-unser-code-gleich-aussieht-und-von-allen-gelesen-werden-kann" class="section level1">
 <h1>style [Style Regeln, damit unser Code gleich aussieht und von allen gelesen werden kann]</h1>
 <!-- rnb-text-end -->
@@ -272,278 +269,51 @@ good &lt;- &quot;good&quot;
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
-<div id="section-1" class="section level1">
-<h1>…………………………………………………………………… —-</h1>
-</div>
-<div id="load-packages-checkpoint" class="section level1">
-<h1>load packages &amp; checkpoint</h1>
+<div id="daten-einlesen" class="section level1">
+<h1>Daten einlesen</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaWYoIXJlcXVpcmUoXCJ0aWR5dmVyc2VcIikpe2luc3RhbGwucGFja2FnZXMoXCJ0aWR5dmVyc2VcIil9OyBsaWJyYXJ5KFwidGlkeXZlcnNlXCIpXG5cbmBgYCJ9 -->
-<pre class="r"><code>if(!require(&quot;tidyverse&quot;)){install.packages(&quot;tidyverse&quot;)}; library(&quot;tidyverse&quot;)
-</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTGFkZSBu9nRpZ2VzIFBha2V0OiB0aWR5dmVyc2VcblJlZ2lzdGVyZWQgUzMgbWV0aG9kcyBvdmVyd3JpdHRlbiBieSAnZGJwbHlyJzpcbiAgbWV0aG9kICAgICAgICAgZnJvbVxuICBwcmludC50YmxfbGF6eSAgICAgXG4gIHByaW50LnRibF9zcWwgICAgICBcbi0tIEF0dGFjaGluZyBwYWNrYWdlcyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSB0aWR5dmVyc2UgMS4zLjAgLS1cbnYgZ2dwbG90MiAzLjMuMiAgICAgdiBwdXJyciAgIDAuMy40XG52IHRpYmJsZSAgMy4wLjQgICAgIHYgZHBseXIgICAxLjAuMlxudiB0aWR5ciAgIDEuMS4yICAgICB2IHN0cmluZ3IgMS40LjBcbnYgcmVhZHIgICAxLjMuMSAgICAgdiBmb3JjYXRzIDAuNS4wXG5QYWtldCCRdGliYmxlkiB3dXJkZSB1bnRlciBSIFZlcnNpb24gNC4wLjMgZXJzdGVsbHQtLSBDb25mbGljdHMgLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gdGlkeXZlcnNlX2NvbmZsaWN0cygpIC0tXG54IGRwbHlyOjpmaWx0ZXIoKSBtYXNrcyBzdGF0czo6ZmlsdGVyKClcbnggZHBseXI6OmxhZygpICAgIG1hc2tzIHN0YXRzOjpsYWcoKVxuIn0= -->
-<pre><code>Lade n昼㸶tiges Paket: tidyverse
-Registered S3 methods overwritten by &#39;dbplyr&#39;:
-  method         from
-  print.tbl_lazy     
-  print.tbl_sql      
--- Attaching packages -------------------------------------------------------- tidyverse 1.3.0 --
-v ggplot2 3.3.2     v purrr   0.3.4
-v tibble  3.0.4     v dplyr   1.0.2
-v tidyr   1.1.2     v stringr 1.4.0
-v readr   1.3.1     v forcats 0.5.0
-Paket 㤼㸱tibble㤼㸲 wurde unter R Version 4.0.3 erstellt-- Conflicts ----------------------------------------------------------- tidyverse_conflicts() --
-x dplyr::filter() masks stats::filter()
-x dplyr::lag()    masks stats::lag()</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaWYoIXJlcXVpcmUoXCJ0aWR5dmVyc2VcIikpe2luc3RhbGwucGFja2FnZXMoXCJ0aWR5dmVyc2VcIil9OyBsaWJyYXJ5KFwidGlkeXZlcnNlXCIpXG5pZighcmVxdWlyZShcImdncGxvdDJcIikpe2luc3RhbGwucGFja2FnZXMoXCJnZ3Bsb3QyXCIpfTsgbGlicmFyeShcImdncGxvdDJcIikgIyBwbG90c1xuaWYoIXJlcXVpcmUoXCJsdWJyaWRhdGVcIikpe2luc3RhbGwucGFja2FnZXMoXCJsdWJyaWRhdGVcIil9OyBsaWJyYXJ5KFwibHVicmlkYXRlXCIpICMgVW1nYW5nIG1pdCBEYXR1bVxuYGBgIn0= -->
-<pre class="r"><code>if(!require(&quot;tidyverse&quot;)){install.packages(&quot;tidyverse&quot;)}; library(&quot;tidyverse&quot;)
-if(!require(&quot;ggplot2&quot;)){install.packages(&quot;ggplot2&quot;)}; library(&quot;ggplot2&quot;) # plots
-if(!require(&quot;lubridate&quot;)){install.packages(&quot;lubridate&quot;)}; library(&quot;lubridate&quot;) # Umgang mit Datum</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTGFkZSBu5pi847i2dGlnZXMgUGFrZXQ6IGx1YnJpZGF0ZVxuXG5BdHRhY2hlIFBha2V0OiDjpLzjuLFsdWJyaWRhdGXjpLzjuLJcblxuVGhlIGZvbGxvd2luZyBvYmplY3RzIGFyZSBtYXNrZWQgZnJvbSDjpLzjuLFwYWNrYWdlOmJhc2XjpLzjuLI6XG5cbiAgICBkYXRlLCBpbnRlcnNlY3QsIHNldGRpZmYsIHVuaW9uXG4ifQ== -->
-<pre><code>Lade n昼㸶tiges Paket: lubridate
-
-Attache Paket: 㤼㸱lubridate㤼㸲
-
-The following objects are masked from 㤼㸱package:base㤼㸲:
-
-    date, intersect, setdiff, union</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaWYoIXJlcXVpcmUoXCJyZWFkclwiKSl7aW5zdGFsbC5wYWNrYWdlcyhcInJlYWRyXCIpfTsgbGlicmFyeShcInJlYWRyXCIpICMgRWlubGVzZW4gdm9uIERhdGVuXG5pZighcmVxdWlyZShcImRwbHlyXCIpKXtpbnN0YWxsLnBhY2thZ2VzKFwiZHBseXJcIil9OyBsaWJyYXJ5KFwiZHBseXJcIikgIyBFaW5sZXNlbiB2b24gXG5pZighcmVxdWlyZShcImUxMDcxXCIpKXtpbnN0YWxsLnBhY2thZ2VzKFwiZTEwNzFcIil9OyBsaWJyYXJ5KFwiZTEwNzFcIikgIyBTdXBwb3J0IFZla3RvciBNYWNoaW5lc1xuYGBgIn0= -->
-<pre class="r"><code>if(!require(&quot;readr&quot;)){install.packages(&quot;readr&quot;)}; library(&quot;readr&quot;) # Einlesen von Daten
-if(!require(&quot;dplyr&quot;)){install.packages(&quot;dplyr&quot;)}; library(&quot;dplyr&quot;) # Einlesen von 
-if(!require(&quot;e1071&quot;)){install.packages(&quot;e1071&quot;)}; library(&quot;e1071&quot;) # Support Vektor Machines</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTGFkZSBu5pi847i2dGlnZXMgUGFrZXQ6IGUxMDcxXG5QYWtldCDjpLzjuLFlMTA3MeOkvOO4siB3dXJkZSB1bnRlciBSIFZlcnNpb24gNC4wLjMgZXJzdGVsbHRcbiJ9 -->
-<pre><code>Lade n昼㸶tiges Paket: e1071
-Paket 㤼㸱e1071㤼㸲 wurde unter R Version 4.0.3 erstellt</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaWYoIXJlcXVpcmUoXCJNZXRyaWNzXCIpKXtpbnN0YWxsLnBhY2thZ2VzKFwiTWV0cmljc1wiKX07IGxpYnJhcnkoXCJNZXRyaWNzXCIpICMgU3VwcG9ydCBWZWt0b3IgTWFjaGluZXNcbmBgYCJ9 -->
-<pre class="r"><code>if(!require(&quot;Metrics&quot;)){install.packages(&quot;Metrics&quot;)}; library(&quot;Metrics&quot;) # Support Vektor Machines</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTGFkZSBu5pi847i2dGlnZXMgUGFrZXQ6IE1ldHJpY3NcblBha2V0IOOkvOO4sU1ldHJpY3PjpLzjuLIgd3VyZGUgdW50ZXIgUiBWZXJzaW9uIDQuMC4zIGVyc3RlbGx0XG4ifQ== -->
-<pre><code>Lade n昼㸶tiges Paket: Metrics
-Paket 㤼㸱Metrics㤼㸲 wurde unter R Version 4.0.3 erstellt</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="section-2" class="section level1">
-<h1>…………………………………………………………………… —-</h1>
-</div>
-<div id="load-data-hier-gehts-los" class="section level1">
-<h1>load data [hier gehts los]</h1>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc291cmNlKFwiaGVscGVycy9kYXRhX3dyYW5nbGluZy5SXCIpXG5cbmBgYCJ9 -->
-<pre class="r"><code>source(&quot;helpers/data_wrangling.R&quot;)
-</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUGFyc2VkIHdpdGggY29sdW1uIHNwZWNpZmljYXRpb246XG5jb2xzKFxuICBEYXR1bSA9IGNvbF9kYXRlKGZvcm1hdCA9IFwiXCIpLFxuICBXYXJlbmdydXBwZSA9IGNvbF9kb3VibGUoKSxcbiAgVW1zYXR6ID0gY29sX2RvdWJsZSgpXG4pXG5QYXJzZWQgd2l0aCBjb2x1bW4gc3BlY2lmaWNhdGlvbjpcbmNvbHMoXG4gIERhdHVtID0gY29sX2RhdGUoZm9ybWF0ID0gXCJcIiksXG4gIEtpZWxlcldvY2hlID0gY29sX2RvdWJsZSgpXG4pXG5QYXJzZWQgd2l0aCBjb2x1bW4gc3BlY2lmaWNhdGlvbjpcbmNvbHMoXG4gIERhdHVtID0gY29sX2RhdGUoZm9ybWF0ID0gXCJcIiksXG4gIEJld29lbGt1bmcgPSBjb2xfZG91YmxlKCksXG4gIFRlbXBlcmF0dXIgPSBjb2xfZG91YmxlKCksXG4gIFdpbmRnZXNjaHdpbmRpZ2tlaXQgPSBjb2xfZG91YmxlKCksXG4gIFdldHRlcmNvZGUgPSBjb2xfZG91YmxlKClcbilcbiJ9 -->
-<pre><code>Parsed with column specification:
-cols(
-  Datum = col_date(format = &quot;&quot;),
-  Warengruppe = col_double(),
-  Umsatz = col_double()
-)
-Parsed with column specification:
-cols(
-  Datum = col_date(format = &quot;&quot;),
-  KielerWoche = col_double()
-)
-Parsed with column specification:
-cols(
-  Datum = col_date(format = &quot;&quot;),
-  Bewoelkung = col_double(),
-  Temperatur = col_double(),
-  Windgeschwindigkeit = col_double(),
-  Wettercode = col_double()
-)</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="section-3" class="section level1">
-<h1>…………………………………………………………………… —-</h1>
-</div>
-<div id="datensätze-strukturieren-und-auf-fehler-untersuchen-hier-gehts-los" class="section level1">
-<h1>Datensätze strukturieren und auf Fehler untersuchen [hier gehts los]</h1>
-<p>weitere Fragem an den Datensatz: Sind alle Tage enthalten oder gibt es auch Tage die nicht enthalten sind? Gibt es Wochen an denen frei/kein umsatz war/ist?</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG4jIyDDnGJlcnByw7xmZW4gYXVmIE5BIFxud2hpY2goaXMubmEodW1zYXR6ZGF0ZW49PVRSVUUpKVxud2hpY2goaXMubmEoa2l3bz09VFJVRSkpXG53aGljaChpcy5uYSh3ZXR0ZXI9PVRSVUUpKVxuXG4jIEVzIGdpYnQgTkFzIGltIHdldHRlciBEYXRlbnNhdHosIGluIGRlbiBiZWlkZW4gYW5kZXJlbiBuaWNodC5cblxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG51bXNhdHpkYXRlbiA8LSByZWFkX2NzdihcInJhd19kYXRhL3Vtc2F0emRhdGVuX2dla3Vlcnp0LmNzdlwiKVxua2l3byA8LSByZWFkX2NzdihcInJhd19kYXRhL2tpd28uY3N2XCIpXG53ZXR0ZXIgPC0gcmVhZF9jc3YoXCJyYXdfZGF0YS93ZXR0ZXIuY3N2XCIpXG5cblxuYGBgIn0= -->
 <pre class="r"><code>
-## Überprüfen auf NA 
-which(is.na(umsatzdaten==TRUE))
-which(is.na(kiwo==TRUE))
-which(is.na(wetter==TRUE))
-
-# Es gibt NAs im wetter Datensatz, in den beiden anderen nicht.
+umsatzdaten &lt;- read_csv(&quot;raw_data/umsatzdaten_gekuerzt.csv&quot;)
+kiwo &lt;- read_csv(&quot;raw_data/kiwo.csv&quot;)
+wetter &lt;- read_csv(&quot;raw_data/wetter.csv&quot;)
 </code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
-<div id="section-4" class="section level1">
-<h1>…………………………………………………………………… —-</h1>
-</div>
-<div id="lineare-regression" class="section level1">
-<h1>Lineare Regression</h1>
+<div id="variable-umsatz-am-vortag-einfügen" class="section level1">
+<h1>Variable Umsatz am Vortag einfügen</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5xIDwtIGxtKCBmb3JtdWxhID0gVW1zYXR6IH4gVGVtcGVyYXR1ciArIFdldHRlcmNvZGUgLGRhdGEgPSB1bXNhdHpkYXRlbilcbnN1bW1hcnkocSlcblxuYGBgIn0= -->
-<pre class="r"><code>
-q &lt;- lm( formula = Umsatz ~ Temperatur + Wettercode ,data = umsatzdaten)
-summary(q)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICBzdW0oaXMubmEoZGF0YSR1bXNhdHpfZGF5X2JlZm9yZSkpXG5cbmBgYCJ9 -->
+<pre class="r"><code>  sum(is.na(data$umsatz_day_before))
 </code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDI1MVxuIn0= -->
+<pre><code>[1] 251</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
-<div id="section-5" class="section level1">
-<h1>…………………………………………………………………… —-</h1>
-</div>
-<div id="support-vektor-machine-analysis" class="section level1">
-<h1>Support Vektor Machine Analysis</h1>
-<div id="todo" class="section level2">
-<h2>TODO</h2>
-<p>Hier sind noch die Fragen offen: Welche Variablen sollten wir setzen?</p>
-</div>
-<div id="aufteilung-des-datensatzes-in-trainings--und-testdaten" class="section level2">
-<h2>Aufteilung des Datensatzes in Trainings- und Testdaten</h2>
+<div id="wochentag-und-wetter-hinzufügen" class="section level1">
+<h1>Wochentag und Wetter hinzufügen</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBadWZhbGxzesOkaGxlciBzZXR6ZW4gKHVtIGRpZSB6dWbDpGxsaWdlIFBhcnRpdGlvbmllcnVuZyBiZWkgamVkZW0gRHVyY2hsYXVmIGdsZWljaCB6dSBoYWx0ZW4pXG5zZXQuc2VlZCgxKVxuXG4jIFp1ZsOkbGxpZ2UgWmllaHVuZyB2b24gSW5kaXplcyBmw7xyIGRpZSBaZWlsZW4gZGVzIERhdGVuc2F0emVzLCBkaWUgZGVtIFRyYWluaW5zZGF0ZW5zYXR6IHp1Z2VvcmRuZXQgd2VyZGVuXG5pbmRpY2VzX3RyYWluIDwtIHNhbXBsZShzZXFfbGVuKG5yb3codW1zYXR6ZGF0ZW4pKSwgc2l6ZSA9IGZsb29yKDAuODAgKiBucm93KHVtc2F0emRhdGVuKSkpXG5cbiMgRGVmaW5pdGlvbiBkZXMgVHJhaW5pbmdzLSB1bmQgVGVzdGRhdGVuc2F0eiBkdXJjaCBTZWxla3Rpb24gYnp3LiBEZXNlbGVrdGlvbiBkZXIgZW50c3ByZWNoZW5kZW4gRGF0ZW56ZWlsZW5cbnRyYWluX2RhdGFzZXQgPC0gdHJhaW5fZGF0YXNldF9vcmcgPC0gdW1zYXR6ZGF0ZW5baW5kaWNlc190cmFpbiwgXVxudGVzdF9kYXRhc2V0IDwtIHVtc2F0emRhdGVuWy1pbmRpY2VzX3RyYWluLCBdXG5gYGAifQ== -->
-<pre class="r"><code># Zufallszähler setzen (um die zufällige Partitionierung bei jedem Durchlauf gleich zu halten)
-set.seed(1)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyAgRXJ3ZWl0ZXJuIGRlcyBVbXNhdHpkYXRlbiBEYXRlbnNhdGVzIG1pdCBXb2NoZW50YWdlblxudW1zYXR6ZGF0ZW4kd2Vla2RheSA8LSB3ZGF5KHVtc2F0emRhdGVuJERhdHVtKSAjIDEgaXN0IFNvbm50YWcuIE1laW5lIGljaC5cblxuIyBXZXR0ZXIgYW4gZGVuIERhdGVuc2F0eiBhbnNjaGxpZcOfZW5cbnVtc2F0emRhdGVuIDwtIG1lcmdlKHVtc2F0emRhdGVuLCB3ZXR0ZXIsIGJ5ID0gXCJEYXR1bVwiKVxuYGBgIn0= -->
+<pre class="r"><code>#  Erweitern des Umsatzdaten Datensates mit Wochentagen
+umsatzdaten$weekday &lt;- wday(umsatzdaten$Datum) # 1 ist Sonntag. Meine ich.
 
-# Zufällige Ziehung von Indizes für die Zeilen des Datensatzes, die dem Traininsdatensatz zugeordnet werden
-indices_train &lt;- sample(seq_len(nrow(umsatzdaten)), size = floor(0.80 * nrow(umsatzdaten)))
-
-# Definition des Trainings- und Testdatensatz durch Selektion bzw. Deselektion der entsprechenden Datenzeilen
-train_dataset &lt;- train_dataset_org &lt;- umsatzdaten[indices_train, ]
-test_dataset &lt;- umsatzdaten[-indices_train, ]</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="data-preparation" class="section level2">
-<h2>Data Preparation</h2>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudHJhaW5fZGF0YXNldCA8LSBzYW1wbGVfZnJhYyh0cmFpbl9kYXRhc2V0X29yZywgLjEwKVxuYGBgIn0= -->
-<pre class="r"><code>train_dataset &lt;- sample_frac(train_dataset_org, .10)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="training-the-svm" class="section level2">
-<h2>Training the SVM</h2>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBFc3RpbWF0aW9uIG9mIGFuIFNWTSB3aXRoIG9wdGltaXplZCB3ZWlnaHRpbmcgcGFyYW1ldGVycyBhbmQgZ2l2ZW4gc3RhbmRhcmQgaHlwZXIgcGFyYW1ldGVyc1xuIyBUeXBpY2FsbHkgbm90IHVzZWQ7IGluc3RlYWQsIHRoZSBmdW5jdGlvbiBzdm1fdHVuZSBpcyB1c2VkIGluIG9yZGVyIHRvIGFsc28gZ2V0IGEgbW9kZWwgd2l0aCBvcHRpbWl6ZWQgaHlwZXIgcGFyYW1ldGVyc1xubW9kZWxfc3ZtIDwtIHN2bShVbXNhdHogfiBCZXdvZWxrdW5nLCB0cmFpbl9kYXRhc2V0KVxuYGBgIn0= -->
-<pre class="r"><code># Estimation of an SVM with optimized weighting parameters and given standard hyper parameters
-# Typically not used; instead, the function svm_tune is used in order to also get a model with optimized hyper parameters
-model_svm &lt;- svm(Umsatz ~ Bewoelkung, train_dataset)</code></pre>
+# Wetter an den Datensatz anschließen
+umsatzdaten &lt;- merge(umsatzdaten, wetter, by = &quot;Datum&quot;)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBFc3RpbWF0aW9uIG9mIHZhcmlvdXMgU1ZNIChlYWNoIHdpdGggb3B0aW1pemVkIHdlaWdodGluZyBwYXJhbWV0ZXJzKSB1c2luZyBzeXN0ZW1hdGljYWxseSB2YXJpZWQgaHlwZXIgcGFyYW1ldGVycyAodHlwaWNhbGx5IGNhbGxlZCAnZ3JpZCBzZWFyY2gnIGFwcHJvYWNoKSBhbmQgY3Jvc3MgdmFsaWRhdGlvblxuIyB0aGUgcmVzdWx0aW5nIG9iamVjdCBpbmNsdWRlcyB0aGUgb3B0aW1hbCBtb2RlbCBpbiB0aGUgZWxlbWVudCBuYW1lZCAnYmVzdC5tb2RlbCdcbnN2bV90dW5lIDwtIHR1bmUoc3ZtLCBVbXNhdHogfiBCZXdvZWxrdW5nICsgVGVtcGVyYXR1ciArIFdpbmRnZXNjaHdpbmRpZ2tlaXQgKyB3ZWVrZGF5LCBkYXRhPXRyYWluX2RhdGFzZXQsXG4gICAgICAgICAgICAgICAgIHJhbmdlcyA9IGxpc3QoZXBzaWxvbiA9IHNlcSgwLjIsMSwwLjEpLCBjb3N0ID0gMl4oMjozKSkpICN3YXMgbWFjaGVuIG1pdCByYW5nZXM/IEFuZGVyZSBXZXJ0ZSB3w6RobGVuP1xuYGBgIn0= -->
-<pre class="r"><code># Estimation of various SVM (each with optimized weighting parameters) using systematically varied hyper parameters (typically called &#39;grid search&#39; approach) and cross validation
-# the resulting object includes the optimal model in the element named &#39;best.model&#39;
-svm_tune &lt;- tune(svm, Umsatz ~ Bewoelkung + Temperatur + Windgeschwindigkeit + weekday, data=train_dataset,
-                 ranges = list(epsilon = seq(0.2,1,0.1), cost = 2^(2:3))) #was machen mit ranges? Andere Werte wählen?</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="checking-the-prediction-quality" class="section level2">
-<h2>Checking the Prediction Quality</h2>
-<div id="trainig-data" class="section level3">
-<h3>Trainig Data</h3>
-<p>SVM without cross validation and grid Search</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBDYWxjdWxhdGluZyB0aGUgcHJlZGljdGlvbiBmb3IgdGhlIHRyYWluaW5nIGRhdGEgdXNpbmcgdGhlIGJlc3QgbW9kZWwgYWNjb3JkaW5nIHRvIHRoZSBncmlkIHNlYXJjaFxucHJlZF90cmFpbiA8LSBwcmVkaWN0KG1vZGVsX3N2bSwgdHJhaW5fZGF0YXNldClcbiMgQ2FsY3VsYXRpbmcgdGhlIHByZWRpY3Rpb24gcXVhbGl0eSBmb3IgdGhlIHRyYWluaW5nIGRhdGEgdXNpbmcgdGhlIE1BUEVcbm1hcGUodHJhaW5fZGF0YXNldCRVbXNhdHosIHByZWRfdHJhaW4pXG5cbmBgYCJ9 -->
-<pre class="r"><code># Calculating the prediction for the training data using the best model according to the grid search
-pred_train &lt;- predict(model_svm, train_dataset)
-# Calculating the prediction quality for the training data using the MAPE
-mape(train_dataset$Umsatz, pred_train)
-</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>SVM with cross validation and grid Search</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBDYWxjdWxhdGluZyB0aGUgcHJlZGljdGlvbiBmb3IgdGhlIHRyYWluaW5nIGRhdGEgdXNpbmcgdGhlIGJlc3QgbW9kZWwgYWNjb3JkaW5nIHRvIHRoZSBncmlkIHNlYXJjaFxucHJlZF90cmFpbiA8LSBwcmVkaWN0KHN2bV90dW5lJGJlc3QubW9kZWwsIHRyYWluX2RhdGFzZXQpXG4jIENhbGN1bGF0aW5nIHRoZSBwcmVkaWN0aW9uIHF1YWxpdHkgZm9yIHRoZSB0cmFpbmluZyBkYXRhIHVzaW5nIHRoZSBNQVBFXG5tYXBlKHRyYWluX2RhdGFzZXQkVW1zYXR6LCBwcmVkX3RyYWluKVxuYGBgIn0= -->
-<pre class="r"><code># Calculating the prediction for the training data using the best model according to the grid search
-pred_train &lt;- predict(svm_tune$best.model, train_dataset)
-# Calculating the prediction quality for the training data using the MAPE
-mape(train_dataset$Umsatz, pred_train)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="test-data" class="section level3">
-<h3>Test Data</h3>
-<p>SVM without cross validation and grid Search</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBDYWxjdWxhdGluZyB0aGUgcHJlZGljdGlvbiBmb3IgdGhlIHRlc3QgZGF0YSB1c2luZyB0aGUgYmVzdCBtb2RlbCBhY2NvcmRpbmcgdG8gdGhlIGdyaWQgc2VhcmNoXG5wcmVkX3Rlc3QgPC0gcHJlZGljdChtb2RlbF9zdm0sIHRlc3RfZGF0YXNldClcbiMgQ2FsY3VsYXRpbmcgdGhlIHByZWRpY3Rpb24gcXVhbGl0eSBmb3IgdGhlIHRlc3QgZGF0YSB1c2luZyB0aGUgTUFQRVxubWFwZSh0ZXN0X2RhdGFzZXQkVW1zYXR6LCBwcmVkX3Rlc3QpXG5gYGAifQ== -->
-<pre class="r"><code># Calculating the prediction for the test data using the best model according to the grid search
-pred_test &lt;- predict(model_svm, test_dataset)
-# Calculating the prediction quality for the test data using the MAPE
-mape(test_dataset$Umsatz, pred_test)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>SVM with cross validation and grid Search</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBDYWxjdWxhdGluZyB0aGUgcHJlZGljdGlvbiBmb3IgdGhlIHRlc3QgZGF0YSB1c2luZyB0aGUgYmVzdCBtb2RlbCBhY2NvcmRpbmcgdG8gdGhlIGdyaWQgc2VhcmNoXG5wcmVkX3Rlc3QgPC0gcHJlZGljdChzdm1fdHVuZSRiZXN0Lm1vZGVsLCB0ZXN0X2RhdGFzZXQpXG4jIENhbGN1bGF0aW5nIHRoZSBwcmVkaWN0aW9uIHF1YWxpdHkgZm9yIHRoZSB0ZXN0IGRhdGEgdXNpbmcgdGhlIE1BUEVcbm1hcGUodGVzdF9kYXRhc2V0JFVtc2F0eiwgcHJlZF90ZXN0KVxuYGBgIn0= -->
-<pre class="r"><code># Calculating the prediction for the test data using the best model according to the grid search
-pred_test &lt;- predict(svm_tune$best.model, test_dataset)
-# Calculating the prediction quality for the test data using the MAPE
-mape(test_dataset$Umsatz, pred_test)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-</div>
-</div>
-<div id="section-6" class="section level1">
-<h1>…………………………………………………………………… —-</h1>
-</div>
-<div id="machine-learning" class="section level1">
-<h1>Machine Learning</h1>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="section-7" class="section level1">
-<h1>…………………………………………………………………… —-</h1>
-</div>
-<div id="merkliste-für-nützliche-funktionen" class="section level1">
-<h1>Merkliste für nützliche Funktionen</h1>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5nbGFuY2UoKSAjIHVtIFBhcmFtZXRlciB2b24gbG0oKSBpbiBUYWJlbGxlIHp1IG9hY2tlblxubWFwZSAoKSAjIEZlaGxlciBiZXJlY2huZW5cblxuYGBgIn0= -->
-<pre class="r"><code>
-glance() # um Parameter von lm() in Tabelle zu oacken
-mape () # Fehler berechnen
-</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQojIC4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLiAtLS0tDQojIHN0eWxlIFtTdHlsZSBSZWdlbG4sIGRhbWl0IHVuc2VyIENvZGUgZ2xlaWNoIGF1c3NpZWh0IHVuZCB2b24gYWxsZW4gZ2VsZXNlbiB3ZXJkZW4ga2Fubl0NCg0KYGBge3J9DQoNCiMgRmlyc3Qgb2YgYWxsIHNvbWUgc3R5bGUgcnVsZXMuIEhlYWRlcnMgZ2V0ICMgYW5kIGEgbGluZSAjIC4uLi4uLiAtLS0tIGFib3ZlDQojIGl0LCBTdWJoZWFkZXJzIGdldCAjIywgc3Vic3ViaGVhZGVycyBnZXQgIyMjLiBBbGwgaGVhZGVycyBnZXQgLS0tLSBhdCB0aGUgZW5kDQojIHNvIHRoYXQgdGhleSBhcmUgZm9sZGFibGUuIENvbGxhcHNlIGFsbCB3aXRoIEFsdCtvIHRvIHNlZSBpdHMgYmVhdXR5DQojIChBbHQrU2hpZnQrbyB0byBleHBhbmQgYWxsIGFmdGVyd2FyZHMpIFJlZ3VsYXIgY29tbWVudHMgdGhhdCBhcmUgbm90IGhlYWRlcnMNCiMgZ2V0IGEgc2luZ2xlICMNCg0KIyMgYWJvdXQgc3BhY2luZw0KDQojYmFkDQojIGdvb2QNCg0KDQojIyBUd28gYmxhbmsgbGluZXMgYmVmb3JlIGVhY2ggaGVhZGVyIHlvdSBjYW4gZm9sZCBhbmQgb25lIGFmdGVyd2FyZHMgLS0tLQ0KDQojIG9uZSBibGFuayBsaW5lIGFmdGVyIGVhY2ggaGVhZGVyLiBObyBibGFuayBsaW5lcyBhZnRlciBhIG5vcm1hbCBjb21tZW50DQpiYWQ8LSJiYWQiDQpnb29kIDwtICJnb29kIg0KDQojIG9uZSBibGFuayBiZWZvcmUgZWFjaCBjb21tZW50Lg0KDQojIFZvciB1bmQgbmFjaCBgYGAgTGVlcnplaWNoZW4gbGFzc2VuDQoNCmBgYA0KDQojIC4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLiAtLS0tDQojIGxvYWQgcGFja2FnZXMgJiBjaGVja3BvaW50DQoNCmBgYHtyfQ0KDQppZighcmVxdWlyZSgiY2hlY2twb2ludCIpKXtpbnN0YWxsLnBhY2thZ2VzKCJjaGVja3BvaW50Iil9OyBsaWJyYXJ5KCJjaGVja3BvaW50IikgIyB0aGlzIHNvbHZlcyB0aGUgcHJvYmxlbSBvZiBwYWNrYWdlIHJlcHJvZHVjaWJpbGl0eS4gSXQgc2F2ZXMgY3VycmVudCB2ZXJzaW9ucyBvZiB0aGUgc2NyaXB0cyB5b3UgdXNlLg0KDQojIGNoZWNrcG9pbnQoIjIwMjAtMTEtMDMiLCBjaGVja3BvaW50TG9jYXRpb24gPSBnZXR3ZCgpKQ0KDQppZighcmVxdWlyZSgidGlkeXZlcnNlIikpe2luc3RhbGwucGFja2FnZXMoInRpZHl2ZXJzZSIpfTsgbGlicmFyeSgidGlkeXZlcnNlIikNCmlmKCFyZXF1aXJlKCJnZ3Bsb3QyIikpe2luc3RhbGwucGFja2FnZXMoImdncGxvdDIiKX07IGxpYnJhcnkoImdncGxvdDIiKSAjIHBsb3RzDQppZighcmVxdWlyZSgibHVicmlkYXRlIikpe2luc3RhbGwucGFja2FnZXMoImx1YnJpZGF0ZSIpfTsgbGlicmFyeSgibHVicmlkYXRlIikgIyBVbWdhbmcgbWl0IERhdHVtDQppZighcmVxdWlyZSgicmVhZHIiKSl7aW5zdGFsbC5wYWNrYWdlcygicmVhZHIiKX07IGxpYnJhcnkoInJlYWRyIikgIyBFaW5sZXNlbiB2b24gRGF0ZW4NCmlmKCFyZXF1aXJlKCJkcGx5ciIpKXtpbnN0YWxsLnBhY2thZ2VzKCJkcGx5ciIpfTsgbGlicmFyeSgiZHBseXIiKSAjIEVpbmxlc2VuIHZvbiANCmlmKCFyZXF1aXJlKCJlMTA3MSIpKXtpbnN0YWxsLnBhY2thZ2VzKCJlMTA3MSIpfTsgbGlicmFyeSgiZTEwNzEiKSAjIFN1cHBvcnQgVmVrdG9yIE1hY2hpbmVzDQppZighcmVxdWlyZSgiTWV0cmljcyIpKXtpbnN0YWxsLnBhY2thZ2VzKCJNZXRyaWNzIil9OyBsaWJyYXJ5KCJNZXRyaWNzIikgIyBTdXBwb3J0IFZla3RvciBNYWNoaW5lcw0KDQpgYGANCg0KIyAuLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4gLS0tLQ0KIyBsb2FkIGRhdGEgW2hpZXIgZ2VodHMgbG9zXQ0KDQpgYGB7cn0NCg0Kc291cmNlKCJoZWxwZXJzL2RhdGFfd3JhbmdsaW5nLlIiKQ0KDQpgYGANCg0KIyAuLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4gLS0tLQ0KIyBEYXRlbnPDpHR6ZSBzdHJ1a3R1cmllcmVuIHVuZCBhdWYgRmVobGVyIHVudGVyc3VjaGVuIFtoaWVyIGdlaHRzIGxvc10NCg0Kd2VpdGVyZSBGcmFnZW0gYW4gZGVuIERhdGVuc2F0ejoNClNpbmQgYWxsZSBUYWdlIGVudGhhbHRlbiBvZGVyIGdpYnQgZXMgYXVjaCBUYWdlIGRpZSBuaWNodCBlbnRoYWx0ZW4gc2luZD8gR2lidCBlcyBXb2NoZW4gYW4gZGVuZW4gZnJlaS9rZWluIHVtc2F0eiB3YXIvaXN0Pw0KDQoNCmBgYHtyfQ0KDQojIyDDnGJlcnByw7xmZW4gYXVmIE5BIA0Kd2hpY2goaXMubmEodW1zYXR6ZGF0ZW49PVRSVUUpKQ0Kd2hpY2goaXMubmEoa2l3bz09VFJVRSkpDQp3aGljaChpcy5uYSh3ZXR0ZXI9PVRSVUUpKQ0KDQojIEVzIGdpYnQgTkFzIGltIHdldHRlciBEYXRlbnNhdHosIGluIGRlbiBiZWlkZW4gYW5kZXJlbiBuaWNodC4NCg0KYGBgDQoNCg0KIyAuLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4gLS0tLQ0KIyBMaW5lYXJlIFJlZ3Jlc3Npb24gDQoNCg0KYGBge3J9DQoNCnEgPC0gbG0oIGZvcm11bGEgPSBVbXNhdHogfiBUZW1wZXJhdHVyICsgV2V0dGVyY29kZSAsZGF0YSA9IHVtc2F0emRhdGVuKQ0Kc3VtbWFyeShxKQ0KDQpgYGANCg0KDQojIC4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLiAtLS0tDQojIFN1cHBvcnQgVmVrdG9yIE1hY2hpbmUgQW5hbHlzaXMNCg0KIyMgVE9ETw0KSGllciBzaW5kIG5vY2ggZGllIEZyYWdlbiBvZmZlbjogV2VsY2hlIFZhcmlhYmxlbiBzb2xsdGVuIHdpciBzZXR6ZW4/DQoNCg0KIyMgQXVmdGVpbHVuZyBkZXMgRGF0ZW5zYXR6ZXMgaW4gVHJhaW5pbmdzLSB1bmQgVGVzdGRhdGVuDQoNCmBgYHtyfQ0KIyBadWZhbGxzesOkaGxlciBzZXR6ZW4gKHVtIGRpZSB6dWbDpGxsaWdlIFBhcnRpdGlvbmllcnVuZyBiZWkgamVkZW0gRHVyY2hsYXVmIGdsZWljaCB6dSBoYWx0ZW4pDQpzZXQuc2VlZCgxKQ0KDQojIFp1ZsOkbGxpZ2UgWmllaHVuZyB2b24gSW5kaXplcyBmw7xyIGRpZSBaZWlsZW4gZGVzIERhdGVuc2F0emVzLCBkaWUgZGVtIFRyYWluaW5zZGF0ZW5zYXR6IHp1Z2VvcmRuZXQgd2VyZGVuDQppbmRpY2VzX3RyYWluIDwtIHNhbXBsZShzZXFfbGVuKG5yb3codW1zYXR6ZGF0ZW4pKSwgc2l6ZSA9IGZsb29yKDAuODAgKiBucm93KHVtc2F0emRhdGVuKSkpDQoNCiMgRGVmaW5pdGlvbiBkZXMgVHJhaW5pbmdzLSB1bmQgVGVzdGRhdGVuc2F0eiBkdXJjaCBTZWxla3Rpb24gYnp3LiBEZXNlbGVrdGlvbiBkZXIgZW50c3ByZWNoZW5kZW4gRGF0ZW56ZWlsZW4NCnRyYWluX2RhdGFzZXQgPC0gdHJhaW5fZGF0YXNldF9vcmcgPC0gdW1zYXR6ZGF0ZW5baW5kaWNlc190cmFpbiwgXQ0KdGVzdF9kYXRhc2V0IDwtIHVtc2F0emRhdGVuWy1pbmRpY2VzX3RyYWluLCBdDQpgYGANCg0KDQojIyBEYXRhIFByZXBhcmF0aW9uDQoNCmBgYHtyfQ0KdHJhaW5fZGF0YXNldCA8LSBzYW1wbGVfZnJhYyh0cmFpbl9kYXRhc2V0X29yZywgLjEwKQ0KYGBgDQoNCg0KIyMgVHJhaW5pbmcgdGhlIFNWTQ0KDQpgYGB7cn0NCiMgRXN0aW1hdGlvbiBvZiBhbiBTVk0gd2l0aCBvcHRpbWl6ZWQgd2VpZ2h0aW5nIHBhcmFtZXRlcnMgYW5kIGdpdmVuIHN0YW5kYXJkIGh5cGVyIHBhcmFtZXRlcnMNCiMgVHlwaWNhbGx5IG5vdCB1c2VkOyBpbnN0ZWFkLCB0aGUgZnVuY3Rpb24gc3ZtX3R1bmUgaXMgdXNlZCBpbiBvcmRlciB0byBhbHNvIGdldCBhIG1vZGVsIHdpdGggb3B0aW1pemVkIGh5cGVyIHBhcmFtZXRlcnMNCm1vZGVsX3N2bSA8LSBzdm0oVW1zYXR6IH4gQmV3b2Vsa3VuZywgdHJhaW5fZGF0YXNldCkNCmBgYA0KDQpgYGB7cn0NCiMgRXN0aW1hdGlvbiBvZiB2YXJpb3VzIFNWTSAoZWFjaCB3aXRoIG9wdGltaXplZCB3ZWlnaHRpbmcgcGFyYW1ldGVycykgdXNpbmcgc3lzdGVtYXRpY2FsbHkgdmFyaWVkIGh5cGVyIHBhcmFtZXRlcnMgKHR5cGljYWxseSBjYWxsZWQgJ2dyaWQgc2VhcmNoJyBhcHByb2FjaCkgYW5kIGNyb3NzIHZhbGlkYXRpb24NCiMgdGhlIHJlc3VsdGluZyBvYmplY3QgaW5jbHVkZXMgdGhlIG9wdGltYWwgbW9kZWwgaW4gdGhlIGVsZW1lbnQgbmFtZWQgJ2Jlc3QubW9kZWwnDQpzdm1fdHVuZSA8LSB0dW5lKHN2bSwgVW1zYXR6IH4gQmV3b2Vsa3VuZyArIFRlbXBlcmF0dXIgKyBXaW5kZ2VzY2h3aW5kaWdrZWl0ICsgd2Vla2RheSwgZGF0YT10cmFpbl9kYXRhc2V0LA0KICAgICAgICAgICAgICAgICByYW5nZXMgPSBsaXN0KGVwc2lsb24gPSBzZXEoMC4yLDEsMC4xKSwgY29zdCA9IDJeKDI6MykpKSAjd2FzIG1hY2hlbiBtaXQgcmFuZ2VzPyBBbmRlcmUgV2VydGUgd8OkaGxlbj8NCmBgYA0KDQoNCiMjIENoZWNraW5nIHRoZSBQcmVkaWN0aW9uIFF1YWxpdHkNCg0KDQojIyMgVHJhaW5pZyBEYXRhDQoNClNWTSB3aXRob3V0IGNyb3NzIHZhbGlkYXRpb24gYW5kIGdyaWQgU2VhcmNoDQpgYGB7cn0NCiMgQ2FsY3VsYXRpbmcgdGhlIHByZWRpY3Rpb24gZm9yIHRoZSB0cmFpbmluZyBkYXRhIHVzaW5nIHRoZSBiZXN0IG1vZGVsIGFjY29yZGluZyB0byB0aGUgZ3JpZCBzZWFyY2gNCnByZWRfdHJhaW4gPC0gcHJlZGljdChtb2RlbF9zdm0sIHRyYWluX2RhdGFzZXQpDQojIENhbGN1bGF0aW5nIHRoZSBwcmVkaWN0aW9uIHF1YWxpdHkgZm9yIHRoZSB0cmFpbmluZyBkYXRhIHVzaW5nIHRoZSBNQVBFDQptYXBlKHRyYWluX2RhdGFzZXQkVW1zYXR6LCBwcmVkX3RyYWluKQ0KDQpgYGANCg0KU1ZNIHdpdGggY3Jvc3MgdmFsaWRhdGlvbiBhbmQgZ3JpZCBTZWFyY2gNCmBgYHtyfQ0KIyBDYWxjdWxhdGluZyB0aGUgcHJlZGljdGlvbiBmb3IgdGhlIHRyYWluaW5nIGRhdGEgdXNpbmcgdGhlIGJlc3QgbW9kZWwgYWNjb3JkaW5nIHRvIHRoZSBncmlkIHNlYXJjaA0KcHJlZF90cmFpbiA8LSBwcmVkaWN0KHN2bV90dW5lJGJlc3QubW9kZWwsIHRyYWluX2RhdGFzZXQpDQojIENhbGN1bGF0aW5nIHRoZSBwcmVkaWN0aW9uIHF1YWxpdHkgZm9yIHRoZSB0cmFpbmluZyBkYXRhIHVzaW5nIHRoZSBNQVBFDQptYXBlKHRyYWluX2RhdGFzZXQkVW1zYXR6LCBwcmVkX3RyYWluKQ0KYGBgDQoNCiMjIyBUZXN0IERhdGENCg0KU1ZNIHdpdGhvdXQgY3Jvc3MgdmFsaWRhdGlvbiBhbmQgZ3JpZCBTZWFyY2gNCmBgYHtyfQ0KIyBDYWxjdWxhdGluZyB0aGUgcHJlZGljdGlvbiBmb3IgdGhlIHRlc3QgZGF0YSB1c2luZyB0aGUgYmVzdCBtb2RlbCBhY2NvcmRpbmcgdG8gdGhlIGdyaWQgc2VhcmNoDQpwcmVkX3Rlc3QgPC0gcHJlZGljdChtb2RlbF9zdm0sIHRlc3RfZGF0YXNldCkNCiMgQ2FsY3VsYXRpbmcgdGhlIHByZWRpY3Rpb24gcXVhbGl0eSBmb3IgdGhlIHRlc3QgZGF0YSB1c2luZyB0aGUgTUFQRQ0KbWFwZSh0ZXN0X2RhdGFzZXQkVW1zYXR6LCBwcmVkX3Rlc3QpDQpgYGANCg0KU1ZNIHdpdGggY3Jvc3MgdmFsaWRhdGlvbiBhbmQgZ3JpZCBTZWFyY2gNCmBgYHtyfQ0KIyBDYWxjdWxhdGluZyB0aGUgcHJlZGljdGlvbiBmb3IgdGhlIHRlc3QgZGF0YSB1c2luZyB0aGUgYmVzdCBtb2RlbCBhY2NvcmRpbmcgdG8gdGhlIGdyaWQgc2VhcmNoDQpwcmVkX3Rlc3QgPC0gcHJlZGljdChzdm1fdHVuZSRiZXN0Lm1vZGVsLCB0ZXN0X2RhdGFzZXQpDQojIENhbGN1bGF0aW5nIHRoZSBwcmVkaWN0aW9uIHF1YWxpdHkgZm9yIHRoZSB0ZXN0IGRhdGEgdXNpbmcgdGhlIE1BUEUNCm1hcGUodGVzdF9kYXRhc2V0JFVtc2F0eiwgcHJlZF90ZXN0KQ0KYGBgDQoNCiMgLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uIC0tLS0NCiMgTWFjaGluZSBMZWFybmluZw0KDQpgYGB7cn0NCg0KDQpgYGANCg0KDQojIC4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLiAtLS0tDQojIE1lcmtsaXN0ZSBmw7xyIG7DvHR6bGljaGUgRnVua3Rpb25lbg0KDQpgYGB7cn0NCg0KZ2xhbmNlKCkgIyB1bSBQYXJhbWV0ZXIgdm9uIGxtKCkgaW4gVGFiZWxsZSB6dSBvYWNrZW4NCm1hcGUgKCkgIyBGZWhsZXIgYmVyZWNobmVuDQoNCmBgYA0K</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQojIHN0eWxlIFtTdHlsZSBSZWdlbG4sIGRhbWl0IHVuc2VyIENvZGUgZ2xlaWNoIGF1c3NpZWh0IHVuZCB2b24gYWxsZW4gZ2VsZXNlbiB3ZXJkZW4ga2Fubl0NCmBgYHtyfQ0KDQojIEZpcnN0IG9mIGFsbCBzb21lIHN0eWxlIHJ1bGVzLiBIZWFkZXJzIGdldCAjIGFuZCBhIGxpbmUgIyAuLi4uLi4gLS0tLSBhYm92ZQ0KIyBpdCwgU3ViaGVhZGVycyBnZXQgIyMsIHN1YnN1YmhlYWRlcnMgZ2V0ICMjIy4gQWxsIGhlYWRlcnMgZ2V0IC0tLS0gYXQgdGhlIGVuZA0KIyBzbyB0aGF0IHRoZXkgYXJlIGZvbGRhYmxlLiBDb2xsYXBzZSBhbGwgd2l0aCBBbHQrbyB0byBzZWUgaXRzIGJlYXV0eQ0KIyAoQWx0K1NoaWZ0K28gdG8gZXhwYW5kIGFsbCBhZnRlcndhcmRzKSBSZWd1bGFyIGNvbW1lbnRzIHRoYXQgYXJlIG5vdCBoZWFkZXJzDQojIGdldCBhIHNpbmdsZSAjDQoNCiMjIGFib3V0IHNwYWNpbmcNCg0KI2JhZA0KIyBnb29kDQoNCg0KIyMgVHdvIGJsYW5rIGxpbmVzIGJlZm9yZSBlYWNoIGhlYWRlciB5b3UgY2FuIGZvbGQgYW5kIG9uZSBhZnRlcndhcmRzIC0tLS0NCg0KIyBvbmUgYmxhbmsgbGluZSBhZnRlciBlYWNoIGhlYWRlci4gTm8gYmxhbmsgbGluZXMgYWZ0ZXIgYSBub3JtYWwgY29tbWVudA0KYmFkPC0iYmFkIg0KZ29vZCA8LSAiZ29vZCINCg0KIyBvbmUgYmxhbmsgYmVmb3JlIGVhY2ggY29tbWVudC4NCg0KIyBWb3IgdW5kIG5hY2ggYGBgIExlZXJ6ZWljaGVuIGxhc3Nlbg0KDQpgYGANCg0KDQojIERhdGVuIGVpbmxlc2VuDQpgYGB7cn0NCg0KdW1zYXR6ZGF0ZW4gPC0gcmVhZF9jc3YoInJhd19kYXRhL3Vtc2F0emRhdGVuX2dla3Vlcnp0LmNzdiIpDQpraXdvIDwtIHJlYWRfY3N2KCJyYXdfZGF0YS9raXdvLmNzdiIpDQp3ZXR0ZXIgPC0gcmVhZF9jc3YoInJhd19kYXRhL3dldHRlci5jc3YiKQ0KDQoNCmBgYA0KDQoNCiMgVmFyaWFibGUgVW1zYXR6IGFtIFZvcnRhZyBlaW5mw7xnZW4NCmBgYHtyfQ0KIyBVbXNhdHogZGVzIFZvcnRhZ2VzIHp1ZsO8Z2VuLCBoaWVyIGhhYmUgaWNoIGVyc3QgdmVyc3VjaHQgZWluZSBGdW5rdGlvbiB6dSBiYXVlbi4gRGFzIGdpbmcgYWJlciBhdWZncnVuZCB2b24gbWVocmZhY2ggVmFyaWFibGVuIEJlenVnIHVuZCBhbmRlcmVtIEtyYW0gaW1tZXIgd2llZGVyIHNjaGllZi4gSmV0enQgYnJ1dGVmb3JjZSBpY2ggZXMuDQoNCiAgICMgdW1zYXR6ZGF0ZW4gaW4gYW5kZXJlciBWYXJpYWJsZSB6dW0gQmVhcmJlaXRlbiBzcGVpY2hlcm4NCiAgIGRhdGEgPC0gdW1zYXR6ZGF0ZW4NCg0KICAjIExlZXJlIFplaWxlIGhpbnp1ZsO8Z2VuDQogICBkYXRhJHVtc2F0el9kYXlfYmVmb3JlIDwtIHJlcChOQSwgbGVuZ3RoKGRhdGEkRGF0dW0pKQ0KICAgDQogICMjIExpc3RlIG1pdCBzdWIgRGF0ZW5zw6R0emVuIGVyc3RlbGxlbiAtLS0tIA0KICAjIG5hY2ggYmVzdGltbXRlciBTcGFydGUgZ3J1cHBpZXJlbiwgaW4gdW5zZXJlbSBGYWxsIFdhcmVuZ3J1cHBlDQogIGRhdGFfZ3JvdXBlZCA8LSBkYXRhICU+JSBncm91cF9ieShXYXJlbmdydXBwZSApIA0KICANCiAgICMgWsOkaGxlbiB3aWV2aWVsZSBHcnVwcGVuIGV4aXNpdGVyZW4NCiAgZ3JvdXBudW1iZXIgPC0gYXMubnVtZXJpYyhsZW5ndGgoY291bnQoZGF0YV9ncm91cGVkKSRXYXJlbmdydXBwZSkpDQogIA0KICAgIyBMaXN0ZSB6dW0gYWJzcGVpY2hlcm4gZGVyIERhdGFmcmFtZXMNCiAgZGF0YV9saXN0IDwtIHZlY3Rvcihtb2RlID0gImxpc3QiLCAwKQ0KICANCiAgDQogIGZvciAoaSBpbiAxOmdyb3VwbnVtYmVyKSB7DQogICAgDQogICAgIyBFcnN0ZWxsZSBEYXRlbnNhdHogZsO8ciBXYXJlbmdydXBwZSB1bmQgc3BlaWNoZXJlIGRpZXNlbg0KICAgIGRhdGFfbGlzdCA8LSBjKGRhdGFfbGlzdCwgbGlzdChzdWJzZXQoZGF0YSwgV2FyZW5ncnVwcGUgPT0gaSApKSkNCiAgfQ0KICAgIyBOYW1lbiB6dSBMaXN0ZSBoaW56dWbDvGdlbg0KICAgbmFtZXMoZGF0YV9saXN0KSA8LSBjKCJkYXRhXzEiLCAiZGF0YV8yIiwgImRhdGFfMyIsICJkYXRhXzQiLCAiZGF0YV81IiwgImRhdGFfNiIpDQogIA0KICAgIyMgVW1zYXR6IGJlaW0gVm9ydGFnIGFscyBWYXJpYWJsZSBiZWlmw7xnZW4gLS0tLQ0KICAgDQogICAjIEbDvHIgYWxsZSBzZWNocyBEYXRlbnPDpHR6ZQ0KICAgIGZvciAoaiBpbiAyOiBhcy5udW1lcmljKGxlbmd0aChkYXRhX2xpc3QkZGF0YV8xJFVtc2F0eikpKXsNCiAgICAgIGlmKGxlbmd0aChkYXRhX2xpc3QkZGF0YV8xJFVtc2F0eltkYXRhX2xpc3QkZGF0YV8xJERhdHVtID09IGRhdGFfbGlzdCRkYXRhXzEkRGF0dW1bal0gLSAxIF0pPjApDQogICAgICBkYXRhX2xpc3QkZGF0YV8xJHVtc2F0el9kYXlfYmVmb3JlW2pdIDwtIGRhdGFfbGlzdCRkYXRhXzEkVW1zYXR6W2RhdGFfbGlzdCRkYXRhXzEkRGF0dW0gPT0gZGF0YV9saXN0JGRhdGFfMSREYXR1bVtqXSAtIDEgXQ0KICAgIH0NCiAgIA0KICAgICAgIGZvciAoaiBpbiAyOiBhcy5udW1lcmljKGxlbmd0aChkYXRhX2xpc3QkZGF0YV8yJFVtc2F0eikpKXsNCiAgICBpZihsZW5ndGgoZGF0YV9saXN0JGRhdGFfMiRVbXNhdHpbZGF0YV9saXN0JGRhdGFfMiREYXR1bSA9PSBkYXRhX2xpc3QkZGF0YV8yJERhdHVtW2pdIC0gMSBdKT4wKQ0KICAgICAgZGF0YV9saXN0JGRhdGFfMiR1bXNhdHpfZGF5X2JlZm9yZVtqXSA8LSBkYXRhX2xpc3QkZGF0YV8yJFVtc2F0eltkYXRhX2xpc3QkZGF0YV8yJERhdHVtID09IGRhdGFfbGlzdCRkYXRhXzIkRGF0dW1bal0gLSAxIF0NCiAgICB9DQoNCiAgIA0KICAgICAgIGZvciAoaiBpbiAyOiBhcy5udW1lcmljKGxlbmd0aChkYXRhX2xpc3QkZGF0YV8zJFVtc2F0eikpKXsNCiAgaWYobGVuZ3RoKGRhdGFfbGlzdCRkYXRhXzMkVW1zYXR6W2RhdGFfbGlzdCRkYXRhXzMkRGF0dW0gPT0gZGF0YV9saXN0JGRhdGFfMyREYXR1bVtqXSAtIDEgXSk+MCkNCiAgICAgIGRhdGFfbGlzdCRkYXRhXzMkdW1zYXR6X2RheV9iZWZvcmVbal0gPC0gZGF0YV9saXN0JGRhdGFfMyRVbXNhdHpbZGF0YV9saXN0JGRhdGFfMyREYXR1bSA9PSBkYXRhX2xpc3QkZGF0YV8zJERhdHVtW2pdIC0gMSBdDQogICAgfQ0KDQogICANCiAgICAgICBmb3IgKGogaW4gMjogYXMubnVtZXJpYyhsZW5ndGgoZGF0YV9saXN0JGRhdGFfNCRVbXNhdHopKSl7DQogIGlmKGxlbmd0aChkYXRhX2xpc3QkZGF0YV80JFVtc2F0eltkYXRhX2xpc3QkZGF0YV80JERhdHVtID09IGRhdGFfbGlzdCRkYXRhXzQkRGF0dW1bal0gLSAxIF0pPjApDQogICAgICBkYXRhX2xpc3QkZGF0YV80JHVtc2F0el9kYXlfYmVmb3JlW2pdIDwtIGRhdGFfbGlzdCRkYXRhXzQkVW1zYXR6W2RhdGFfbGlzdCRkYXRhXzQkRGF0dW0gPT0gZGF0YV9saXN0JGRhdGFfNCREYXR1bVtqXSAtIDEgXQ0KICAgIH0NCg0KICAgDQogICAgICAgZm9yIChqIGluIDI6IGFzLm51bWVyaWMobGVuZ3RoKGRhdGFfbGlzdCRkYXRhXzUkVW1zYXR6KSkpew0KICBpZihsZW5ndGgoZGF0YV9saXN0JGRhdGFfNSRVbXNhdHpbZGF0YV9saXN0JGRhdGFfNSREYXR1bSA9PSBkYXRhX2xpc3QkZGF0YV81JERhdHVtW2pdIC0gMSBdKT4wKQ0KICAgICAgZGF0YV9saXN0JGRhdGFfNSR1bXNhdHpfZGF5X2JlZm9yZVtqXSA8LSBkYXRhX2xpc3QkZGF0YV81JFVtc2F0eltkYXRhX2xpc3QkZGF0YV81JERhdHVtID09IGRhdGFfbGlzdCRkYXRhXzUkRGF0dW1bal0gLSAxIF0NCiAgICB9DQoNCiAgIA0KICAgICAgIGZvciAoaiBpbiAyOiBhcy5udW1lcmljKGxlbmd0aChkYXRhX2xpc3QkZGF0YV82JFVtc2F0eikpKXsNCiAgaWYobGVuZ3RoKGRhdGFfbGlzdCRkYXRhXzYkVW1zYXR6W2RhdGFfbGlzdCRkYXRhXzYkRGF0dW0gPT0gZGF0YV9saXN0JGRhdGFfNiREYXR1bVtqXSAtIDEgXSk+MCkNCiAgICANCiAgICAgIGRhdGFfbGlzdCRkYXRhXzYkdW1zYXR6X2RheV9iZWZvcmVbal0gPC0gZGF0YV9saXN0JGRhdGFfNiRVbXNhdHpbZGF0YV9saXN0JGRhdGFfNiREYXR1bSA9PSBkYXRhX2xpc3QkZGF0YV82JERhdHVtW2pdIC0gMSBdDQogICAgfQ0KDQoNCiAgIyMgZGllc2UgRGF0ZW5zw6R0emUgd2VyZGVuIG51biBnZW1lcmd0IHVuZCBkYW5uIGFscyBPdXRwdXQgZGVyIEZ1bmt0aW9uIGF1c2dlZ2ViZW4gLS0tLQ0KDQogICBkYXRhIDwtIGRhdGFfbGlzdFtbMV1dDQogIGZvcihrIGluIDI6KGdyb3VwbnVtYmVyKSl7DQogICAgZGF0YSA8LSBtZXJnZSggZGF0YV9saXN0W1trXV0sIGRhdGEgICwgYnkgPSBjKCdXYXJlbmdydXBwZScsICJVbXNhdHoiLCAiRGF0dW0iLCAidW1zYXR6X2RheV9iZWZvcmUiKSwgYWxsID0gVFJVRSkNCiAgfQ0KDQogICANCiAgIyMgY2hlY2sgZm9yIE5BUyAtLS0tDQogIHN1bShpcy5uYShkYXRhJHVtc2F0el9kYXlfYmVmb3JlKSkNCg0KYGBgDQojIFdvY2hlbnRhZyB1bmQgV2V0dGVyIGhpbnp1ZsO8Z2VuDQpgYGB7cn0NCiMgIEVyd2VpdGVybiBkZXMgVW1zYXR6ZGF0ZW4gRGF0ZW5zYXRlcyBtaXQgV29jaGVudGFnZW4NCnVtc2F0emRhdGVuJHdlZWtkYXkgPC0gd2RheSh1bXNhdHpkYXRlbiREYXR1bSkgIyAxIGlzdCBTb25udGFnLiBNZWluZSBpY2guDQoNCiMgV2V0dGVyIGFuIGRlbiBEYXRlbnNhdHogYW5zY2hsaWXDn2VuDQp1bXNhdHpkYXRlbiA8LSBtZXJnZSh1bXNhdHpkYXRlbiwgd2V0dGVyLCBieSA9ICJEYXR1bSIpDQpgYGANCg0K</div>
 
 
 
@@ -590,7 +360,7 @@ $(document).ready(function () {
 <!-- code folding -->
 <script>
 $(document).ready(function () {
-  window.initializeSourceEmbed("Datenauswertung.Rmd");
+  window.initializeSourceEmbed("data_wrangling.Rmd");
   window.initializeCodeFolding("show" === "show");
 });
 </script>
