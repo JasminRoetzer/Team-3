@@ -56,10 +56,11 @@ if(!require("Metrics")){install.packages("Metrics")}; library("Metrics") # Suppo
 
 ```{r}
 
-umsatzdaten <- read_csv("raw_data/umsatzdaten_gekuerzt.csv")
+umsatzdaten <-read_csv("raw_data/umsatzdaten_gekuerzt.csv")
 kiwo <- read_csv("raw_data/kiwo.csv")
 wetter <- read_csv("raw_data/wetter.csv")
-
+uebernachtungen <- read.csv("raw_data/Uebernachtungen_Kiel_Mai-August_2019.CSV",sep = ";")
+holstenstrasse <- read.csv("raw_data/kiel-holstenstrasse_2020.csv", sep = ";")
 ```
 
 # .............................................................................. ----
@@ -95,6 +96,9 @@ umsatzdaten %>% group_by(weekday) # klappt so nicht. Muss mit Group_by gemacht w
 
 # .............................................................................. ----
 # Lineare Regression 
+```{r}
+
+```
 
 
 ```{r}
