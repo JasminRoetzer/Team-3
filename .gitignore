@@ -45,3 +45,5 @@ vignettes/*.pdf
 
 .Skripte_Brandt
 
+*.html
+*.nb
