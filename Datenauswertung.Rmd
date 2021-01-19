@@ -56,11 +56,10 @@ if(!require("Metrics")){install.packages("Metrics")}; library("Metrics") # Suppo
 
 ```{r}
 
-umsatzdaten <-read_csv("raw_data/umsatzdaten_gekuerzt.csv")
-kiwo <- read_csv("raw_data/kiwo.csv")
-wetter <- read_csv("raw_data/wetter.csv")
-uebernachtungen <- read.csv("raw_data/Uebernachtungen_Kiel_Mai-August_2019.csv",sep = ";")
-holstenstrasse <- read.csv("raw_data/kiel-holstenstrasse_2020.csv", sep = ";")
+umsatzdaten <-read_csv("data/umsatzdaten.csv")
+
+uebernachtungen <- read.csv("raw_data/Uebernachtungen_Kiel_Mai-August_2019.csv",sep = ";") #läuft och nicht
+holstenstrasse <- read.csv("raw_data/kiel-holstenstrasse_2020.csv", sep = ";") #löäuft noch nicht
 
 print(umsatzdaten)
 ```
@@ -72,35 +71,10 @@ weitere Fragem an den Datensatz:
 Sind alle Tage enthalten oder gibt es auch Tage die nicht enthalten sind? Gibt es Wochen an denen frei/kein umsatz war/ist?
 
 
-```{r}
 
-## Überprüfen auf NA 
-which(is.na(umsatzdaten==TRUE))
-which(is.na(kiwo==TRUE))
-which(is.na(wetter==TRUE))
-
-# Es gibt NAs im wetter Datensatz, in den beiden anderen nicht.
-
-```
-
-```{r}
-
-## Erweitern des Umsatzdaten Datensates mit Wochentagen
-umsatzdaten$weekday <- wday(umsatzdaten$Datum) # 1 ist Sonntag. Meine ich.
-
-## Wetter an den Datensatz anschließen
-umsatzdaten <- merge(umsatzdaten, wetter, by = "Datum")
-
-## Umsatz des Vortages zufügen -> Vorsicht mit Warengruppe!
-umsatzdaten %>% group_by(weekday) # klappt so nicht. Muss mit Group_by gemacht werde
-
-```
 
 # .............................................................................. ----
 # Lineare Regression 
-```{r}
-
-```
 
 
 ```{r}
@@ -124,6 +98,9 @@ Hier sind noch die Fragen offen: Welche Variablen sollten wir setzen?
 # Zufallszähler setzen (um die zufällige Partitionierung bei jedem Durchlauf gleich zu halten)
 set.seed(1)
 
+# dataset kürzen
+
+umsatzdaten <- data.frame(umsatzdaten[,c(2:9,19)])
 # Zufällige Ziehung von Indizes für die Zeilen des Datensatzes, die dem Traininsdatensatz zugeordnet werden
 indices_train <- sample(seq_len(nrow(umsatzdaten)), size = floor(0.80 * nrow(umsatzdaten)))
 
@@ -145,14 +122,16 @@ train_dataset <- sample_frac(train_dataset_org, .10)
 ```{r}
 # Estimation of an SVM with optimized weighting parameters and given standard hyper parameters
 # Typically not used; instead, the function svm_tune is used in order to also get a model with optimized hyper parameters
-model_svm <- svm(Umsatz ~ Bewoelkung, train_dataset)
+model_svm <- svm(Umsatz ~ umsatz_day_before, train_dataset)
+model_svm
 ```
 
 ```{r}
 # Estimation of various SVM (each with optimized weighting parameters) using systematically varied hyper parameters (typically called 'grid search' approach) and cross validation
 # the resulting object includes the optimal model in the element named 'best.model'
-svm_tune <- tune(svm, Umsatz ~ Bewoelkung + Temperatur + Windgeschwindigkeit + weekday, data=train_dataset,
+svm_tune <- tune(svm, Umsatz ~ weekday + umsatz_day_before, data=train_dataset,
                  ranges = list(epsilon = seq(0.2,1,0.1), cost = 2^(2:3))) #was machen mit ranges? Andere Werte wählen?
+svm_tune
 ```
 
 
