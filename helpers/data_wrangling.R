@@ -26,6 +26,7 @@ good <- "good"
 
 # .............................................................................. ----
 # load packages
+
 if(!require("tidyverse")){install.packages("tidyverse")}; library("tidyverse")
 if(!require("ggplot2")){install.packages("ggplot2")}; library("ggplot2") # plots
 if(!require("lubridate")){install.packages("lubridate")}; library("lubridate") # Umgang mit Datum
@@ -34,14 +35,18 @@ if(!require("dplyr")){install.packages("dplyr")}; library("dplyr") # Einlesen vo
 if(!require("e1071")){install.packages("e1071")}; library("e1071") # Support Vektor Machines
 if(!require("Metrics")){install.packages("Metrics")}; library("Metrics") # Support Vektor Machines
 if(!require("readxl")){install.packages("readxl")}; library("readxl") #load Excel Data
-
+if(!require("base")){install.packages("base")}; library("base") # Zeitstempel
 
 
 # .............................................................................. ----
 # Daten einlesen ----
-umsatzdaten <- read_csv("raw_data/umsatzdaten_gekuerzt.csv")
-kiwo <- read_csv("raw_data/kiwo.csv")
-wetter <- read_csv("raw_data/wetter.csv")
+
+Umsatzdaten_Excel <- read.csv("raw_data/umsatzdaten_gekuerzt.csv")
+Wetter_Excel <- read_excel("raw_data/Wetter_Excel.xlsx")
+Schiffsverkehr <- read_excel("raw_data/Schiffsverkehr.xlsx")
+Uebernachtungen_Kiel_Mai_August_2019_new <- read_excel("raw_data/Uebernachtungen_Kiel_Mai-August_2019_new.xlsx")
+Besucher_Kiwo <- read_excel("raw_data/Besucher_Kiwo.xlsx")
+kiwo_Excel <- read_excel("raw_data/kiwo_Excel.xlsx")
 
 
 # .............................................................................. ----
@@ -50,11 +55,13 @@ wetter <- read_csv("raw_data/wetter.csv")
 
 
 ## Vorbereitung ----
-# umsatzdaten in anderer Variable zum Bearbeiten speichern
-data <- umsatzdaten
 
+data <- Umsatzdaten_Excel
 # Leere Zeile hinzufügen
 data$umsatz_day_before <- rep(NA, length(data$Datum))
+
+# Datum in Zeitstempel umwandeln
+data$Datum <- as.POSIXct(data$Datum)
 
 
 # .............................................................................. ----
@@ -80,40 +87,41 @@ names(data_list) <- c("data_1", "data_2", "data_3", "data_4", "data_5", "data_6"
 # .............................................................................. ----
 ## Umsatz beim Vortag als Variable beifügen ----
 
+
 # Für alle sechs Datensätze
 for (j in 2: as.numeric(length(data_list$data_1$Umsatz))){
-  if(length(data_list$data_1$Umsatz[data_list$data_1$Datum == data_list$data_1$Datum[j] - 1 ])>0)
-    data_list$data_1$umsatz_day_before[j] <- data_list$data_1$Umsatz[data_list$data_1$Datum == data_list$data_1$Datum[j] - 1 ]
+  if(length(data_list$data_1$Umsatz[data_list$data_1$Datum == data_list$data_1$Datum[j] - 60*60*24 ])>0)
+    data_list$data_1$umsatz_day_before[j] <- data_list$data_1$Umsatz[data_list$data_1$Datum == data_list$data_1$Datum[j] - 60*60*24 ]
 }
 
 for (j in 2: as.numeric(length(data_list$data_2$Umsatz))){
-  if(length(data_list$data_2$Umsatz[data_list$data_2$Datum == data_list$data_2$Datum[j] - 1 ])>0)
-    data_list$data_2$umsatz_day_before[j] <- data_list$data_2$Umsatz[data_list$data_2$Datum == data_list$data_2$Datum[j] - 1 ]
+  if(length(data_list$data_2$Umsatz[data_list$data_2$Datum == data_list$data_2$Datum[j] - 60*60*24 ])>0)
+    data_list$data_2$umsatz_day_before[j] <- data_list$data_2$Umsatz[data_list$data_2$Datum == data_list$data_2$Datum[j] - 60*60*24 ]
 }
 
 
 for (j in 2: as.numeric(length(data_list$data_3$Umsatz))){
-  if(length(data_list$data_3$Umsatz[data_list$data_3$Datum == data_list$data_3$Datum[j] - 1 ])>0)
-    data_list$data_3$umsatz_day_before[j] <- data_list$data_3$Umsatz[data_list$data_3$Datum == data_list$data_3$Datum[j] - 1 ]
+  if(length(data_list$data_3$Umsatz[data_list$data_3$Datum == data_list$data_3$Datum[j] - 60*60*24 ])>0)
+    data_list$data_3$umsatz_day_before[j] <- data_list$data_3$Umsatz[data_list$data_3$Datum == data_list$data_3$Datum[j] - 60*60*24 ]
 }
 
 
 for (j in 2: as.numeric(length(data_list$data_4$Umsatz))){
-  if(length(data_list$data_4$Umsatz[data_list$data_4$Datum == data_list$data_4$Datum[j] - 1 ])>0)
-    data_list$data_4$umsatz_day_before[j] <- data_list$data_4$Umsatz[data_list$data_4$Datum == data_list$data_4$Datum[j] - 1 ]
+  if(length(data_list$data_4$Umsatz[data_list$data_4$Datum == data_list$data_4$Datum[j] - 60*60*24 ])>0)
+    data_list$data_4$umsatz_day_before[j] <- data_list$data_4$Umsatz[data_list$data_4$Datum == data_list$data_4$Datum[j] - 60*60*24 ]
 }
 
 
 for (j in 2: as.numeric(length(data_list$data_5$Umsatz))){
-  if(length(data_list$data_5$Umsatz[data_list$data_5$Datum == data_list$data_5$Datum[j] - 1 ])>0)
-    data_list$data_5$umsatz_day_before[j] <- data_list$data_5$Umsatz[data_list$data_5$Datum == data_list$data_5$Datum[j] - 1 ]
+  if(length(data_list$data_5$Umsatz[data_list$data_5$Datum == data_list$data_5$Datum[j] - 60*60*24 ])>0)
+    data_list$data_5$umsatz_day_before[j] <- data_list$data_5$Umsatz[data_list$data_5$Datum == data_list$data_5$Datum[j] - 60*60*24 ]
 }
 
 
 for (j in 2: as.numeric(length(data_list$data_6$Umsatz))){
-  if(length(data_list$data_6$Umsatz[data_list$data_6$Datum == data_list$data_6$Datum[j] - 1 ])>0)
+  if(length(data_list$data_6$Umsatz[data_list$data_6$Datum == data_list$data_6$Datum[j] - 60*60*24 ])>0)
     
-    data_list$data_6$umsatz_day_before[j] <- data_list$data_6$Umsatz[data_list$data_6$Datum == data_list$data_6$Datum[j] - 1 ]
+    data_list$data_6$umsatz_day_before[j] <- data_list$data_6$Umsatz[data_list$data_6$Datum == data_list$data_6$Datum[j] - 60*60*24 ]
 }
 
 
@@ -124,7 +132,26 @@ for(k in 2:(groupnumber)){
   data <- merge( data_list[[k]], data  , by = c('Warengruppe', "Umsatz", "Datum", "umsatz_day_before"), all = TRUE)
 }
 
+## die anderen Datensätze werden nun auch dazu gemergt
+## Vorher muss das DAtum wieder als Charakter gespeichert werden
+
+data$Datum <- as.POSIXct(substr( as.character(data$Datum) , 1, 10), tz ="UTC")
+
+Schiffsverkehr$Datum
+
+m1 <- merge(x=data, y= Wetter_Excel, by= "Datum", all.x = TRUE) ## merge Umsatzdaten mit Wetter
+
+m2 <- merge(x=m1, y= Schiffsverkehr, by="Datum", all.x = TRUE) ## merge m1 mit Schiffsverkehr
+
+m3 <- merge(x=m2, y= Uebernachtungen_Kiel_Mai_August_2019_new, all.x = TRUE) ## merge m2 mit Übernachtungen
+
+m4 <- full_join(x=m3, y= Besucher_Kiwo) ## merge m3 mit Besucherzahlen
+
+data <- full_join(x= m4, y= kiwo_Excel) ## merge m4 mit Kiwo
+
 umsatzdaten <- data
+
+
 # .............................................................................. ----
 ## check for NAS ----
 sum(is.na(data$umsatz_day_before))
@@ -134,36 +161,6 @@ sum(is.na(data$umsatz_day_before))
 # Wochentag und Wetter hinzufügen ----
 # Erweitern des Umsatzdaten Datensates mit Wochentagen
 umsatzdaten$weekday <- wday(umsatzdaten$Datum) # 1 ist Sonntag. Meine ich.
-
-
-# .............................................................................. ----
-# Daten mergen ----
-
-
-## Einlesen ----
-Schiffsverkehr <- read_excel("raw_data/Schiffsverkehr.xlsx")
-
-Uebernachtungen_Kiel_Mai_August_2019_new <- read_excel("raw_data/Uebernachtungen_Kiel_Mai-August_2019_new.xlsx")
-
-Besucher_Kiwo <- read_excel("raw_data/Besucher_Kiwo.xlsx")
-
-
-
-## merging ----
-
-m1 <- umsatzdaten
-
-m2 <- merge(x=m1, y= Schiffsverkehr, by="Datum", all.x = TRUE) ## merge m1 mit Schiffsverkehr
-
-m3 <- merge(x=m2, y= Uebernachtungen_Kiel_Mai_August_2019_new, all.x = TRUE) ## merge m2 mit Übernachtungen
-
-m4 <- full_join(x=m3, y= Besucher_Kiwo) ## merge m3 mit Besucherzahlen
-
-
-
-
-library(plyr)
-umsatzdaten <- ddply(m4,"Datum",numcolwise(sum)) ## merge Datumsangaben
 
 
 #............................................................................... -----
