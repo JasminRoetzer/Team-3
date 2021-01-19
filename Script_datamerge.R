@@ -30,3 +30,9 @@ m5 <- full_join(x= m4, y= kiwo_Excel) ## merge m4 mit Kiwo
 
 library(plyr)
 m_final <- ddply(m5,"Datum",numcolwise(sum)) ## merge Datumsangaben
+
+
+for(i in 1:ncol(m_final)){
+  m_final[is.na(m_final[,i]), i] <- mean(m_final[,i], na.rm = TRUE)
+  
+}
