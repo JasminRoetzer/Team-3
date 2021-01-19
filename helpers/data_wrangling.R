@@ -136,5 +136,18 @@ umsatzdaten$weekday <- wday(umsatzdaten$Datum) # 1 ist Sonntag. Meine ich.
 # Wetter an den Datensatz anschließen
 umsatzdaten <- merge(umsatzdaten, wetter, by = "Datum")
 
+
+#............................................................................... -----
+# NAs durch Mittelwerte der Spalten ersetzen
+
+
+for(i in (1:length(umsatzdaten[1,]))) {
+  umsatzdaten[,i] <- replace(umsatzdaten[,i], is.na(umsatzdaten[,i]), mean(umsatzdaten[,i], na.rm = TRUE))
+}
+
+
+#............................................................................... -----
+# Datensatz abspeichern ----
 write.csv(umsatzdaten, "data/umsatzdaten.csv")
+
 
