@@ -33,6 +33,8 @@ if(!require("readr")){install.packages("readr")}; library("readr") # Einlesen vo
 if(!require("dplyr")){install.packages("dplyr")}; library("dplyr") # Einlesen von 
 if(!require("e1071")){install.packages("e1071")}; library("e1071") # Support Vektor Machines
 if(!require("Metrics")){install.packages("Metrics")}; library("Metrics") # Support Vektor Machines
+if(!require("readxl")){install.packages("readxl")}; library("readxl") #load Excel Data
+
 
 
 # .............................................................................. ----
@@ -133,8 +135,35 @@ sum(is.na(data$umsatz_day_before))
 # Erweitern des Umsatzdaten Datensates mit Wochentagen
 umsatzdaten$weekday <- wday(umsatzdaten$Datum) # 1 ist Sonntag. Meine ich.
 
-# Wetter an den Datensatz anschließen
-umsatzdaten <- merge(umsatzdaten, wetter, by = "Datum")
+
+# .............................................................................. ----
+# Daten mergen ----
+
+
+## Einlesen ----
+Schiffsverkehr <- read_excel("raw_data/Schiffsverkehr.xlsx")
+
+Uebernachtungen_Kiel_Mai_August_2019_new <- read_excel("raw_data/Uebernachtungen_Kiel_Mai-August_2019_new.xlsx")
+
+Besucher_Kiwo <- read_excel("raw_data/Besucher_Kiwo.xlsx")
+
+
+
+## merging ----
+
+m1 <- umsatzdaten
+
+m2 <- merge(x=m1, y= Schiffsverkehr, by="Datum", all.x = TRUE) ## merge m1 mit Schiffsverkehr
+
+m3 <- merge(x=m2, y= Uebernachtungen_Kiel_Mai_August_2019_new, all.x = TRUE) ## merge m2 mit Übernachtungen
+
+m4 <- full_join(x=m3, y= Besucher_Kiwo) ## merge m3 mit Besucherzahlen
+
+
+
+
+library(plyr)
+umsatzdaten <- ddply(m4,"Datum",numcolwise(sum)) ## merge Datumsangaben
 
 
 #............................................................................... -----
